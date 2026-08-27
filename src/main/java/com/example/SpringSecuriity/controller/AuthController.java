@@ -38,6 +38,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginUserDTO loginUserDTO) {
+        System.out.println("test2");
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginUserDTO.getEmail(), loginUserDTO.getPassword())
         );

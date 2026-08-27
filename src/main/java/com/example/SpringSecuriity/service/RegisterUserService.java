@@ -1,11 +1,14 @@
 package com.example.SpringSecuriity.service;
 
+import com.example.SpringSecuriity.entity.Role;
 import com.example.SpringSecuriity.entity.User;
 import com.example.SpringSecuriity.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +24,7 @@ public class RegisterUserService {
         User user = new User();
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
-        System.out.println(user.getPassword());
+        user.setRoles(Set.of(Role.USER));
         return userRepository.save(user);
     }
 
